@@ -16,4 +16,15 @@ class SchedulerTasks {
     fun reportCurrentTime() {
         log.info("The time is now {}", dateFormat.format(Date()))
     }
+
+    @Scheduled(fixedDelay = 5000)
+    fun reportCurrentTimeEveryTenSeconds() {
+        log.info("[reportCurrentTimeEveryTenSeconds] The time is now {}", dateFormat.format(Date()))
+        Thread.sleep(5000)
+    }
+
+    @Scheduled(cron = "0/5 * * * * *")
+    fun reportCurrentTimeWithCronExpr() {
+        log.info("[reportCurrentTimeWithCronExpr] The time is now {}", dateFormat.format(Date()))
+    }
 }
